@@ -23,6 +23,11 @@ Auth::routes([
     'register' => false, // for register account
 ]);
 
+Route::get('no1', [App\Http\Controllers\HomeController::class, 'nomor1']);
+Route::get('no2', [App\Http\Controllers\HomeController::class, 'nomor2']);
+Route::get('no3', [App\Http\Controllers\HomeController::class, 'nomor3']);
+Route::get('no4', [App\Http\Controllers\HomeController::class, 'nomor4']);
+
 Route::prefix('v1')->middleware('auth')->group(function () {
     Route::get('', [App\Http\Controllers\V1\IndexController::class, 'index'])->name('index');
 
