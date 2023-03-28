@@ -23,7 +23,7 @@ Auth::routes([
     'register' => false, // for register account
 ]);
 
-Route::prefix('v1')->group(function () {
+Route::prefix('v1')->middleware('auth')->group(function () {
     Route::get('', [App\Http\Controllers\V1\IndexController::class, 'index'])->name('index');
 
     Route::prefix('companies')->group(function () {
@@ -52,5 +52,3 @@ Route::prefix('v1')->group(function () {
         Route::get('', [App\Http\Controllers\V1\TransactionController::class, 'index'])->name('transaction.index');
     });
 });
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

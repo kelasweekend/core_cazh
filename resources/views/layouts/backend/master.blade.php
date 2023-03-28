@@ -82,7 +82,7 @@
                             <span class="avatar avatar-sm"
                                 style="background-image: url(./static/avatars/000m.jpg)"></span>
                             <div class="d-none d-xl-block ps-2">
-                                <div>Paweł Kuna</div>
+                                <div>{{ auth()->user()->name }}</div>
                                 <div class="mt-1 small text-muted">Admin</div>
                             </div>
                         </a>
@@ -92,7 +92,13 @@
                             <a href="#" class="dropdown-item">Feedback</a>
                             <div class="dropdown-divider"></div>
                             <a href="./settings.html" class="dropdown-item">Settings</a>
-                            <a href="./sign-in.html" class="dropdown-item">Logout</a>
+                            <a href="#"
+                                onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"
+                                class="dropdown-item">Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </div>
                     </div>
                 </div>
